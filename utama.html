@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ucapan Ulang Tahun 💙</title>
+  <style>
+    :root {
+      --blue: #a8cfff;
+      --soft-blue: #d8e9ff;
+      --pink: #fcbad3;
+      --white: #ffffff;
+      --shadow: rgba(0,0,0,0.1);
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background: linear-gradient(180deg, var(--soft-blue), #fff);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      font-family: 'Poppins', sans-serif;
+      overflow: hidden;
+      color: #333;
+    }
+
+    h1 {
+      color: #4a73d9;
+      font-size: 2rem;
+      margin-bottom: 15px;
+      animation: fadeIn 1.5s ease;
+    }
+
+    p {
+      max-width: 500px;
+      font-size: 1rem;
+      margin: 8px auto;
+      line-height: 1.6;
+      animation: fadeIn 2s ease;
+    }
+
+    .btn {
+      background: linear-gradient(90deg, #8ec5ff, #fcbad3);
+      color: white;
+      border: none;
+      border-radius: 15px;
+      padding: 12px 25px;
+      font-size: 1rem;
+      margin-top: 25px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px var(--shadow);
+      transition: 0.3s;
+      animation: fadeIn 2.5s ease;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 15px var(--shadow);
+    }
+
+    img.profile {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #8ec5ff;
+      box-shadow: 0 5px 10px var(--shadow);
+      margin-bottom: 15px;
+      animation: fadeIn 2s ease;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(10px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    /* floating emoji animation */
+    .floating {
+      position: fixed;
+      bottom: -50px;
+      font-size: 1.5rem;
+      opacity: 0.8;
+      animation: float 6s linear infinite;
+      z-index: 0;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-120vh) scale(1.2); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <img src="img/default.jpg" alt="Foto Ulang Tahun" class="profile">
+    <h1 id="namaUcapan">Selamat Ulang Tahun 💙</h1>
+    <p>Hari ini adalah hari istimewa untukmu. Semoga semua hal indah datang menghampiri, dan setiap langkahmu selalu diselimuti kebahagiaan. 🌸</p>
+    <p>Terima kasih sudah menjadi seseorang yang berharga dalam hidup banyak orang. 💖</p>
+    <p>Semoga panjang umur, sehat selalu, dan semua harapanmu menjadi kenyataan. 🎂✨</p>
+    <button class="btn" onclick="nextPage()">Lihat Kenangan 📸</button>
+  </div>
+
+  <script>
+    // ambil nama dari localStorage
+    const nama = localStorage.getItem("celebrantName") || "Sahabat Manis";
+    document.getElementById("namaUcapan").textContent = `Selamat Ulang Tahun, ${nama}! 💙`;
+
+    // animasi confetti/love/balon terbang
+    const emojis = ['🎈','💙','🎀','💖','✨','🌸','🎉','🩵'];
+    setInterval(() => {
+      const el = document.createElement('div');
+      el.className = 'floating';
+      el.textContent = emojis[Math.floor(Math.random()*emojis.length)];
+      el.style.left = Math.random() * 100 + 'vw';
+      el.style.animationDuration = (4 + Math.random()*3) + 's';
+      document.body.appendChild(el);
+      setTimeout(()=>el.remove(), 7000);
+    }, 600);
+
+    function nextPage() {
+      window.location.href = "gallery.html";
+    }
+  </script>
+</body>
+</html>
